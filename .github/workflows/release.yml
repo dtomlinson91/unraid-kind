@@ -1,0 +1,29 @@
+name: release
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: Upstream tag to build. Leave empty for the latest upstream release.
+        default: ""
+      force:
+        description: Build and release even if the plugin already has this upstream version.
+        type: boolean
+        default: false
+      dry_run:
+        description: Build and test, but do not release.
+        type: boolean
+        default: false
+  schedule:
+    - cron: "23 4 * * 1"
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    uses: dtomlinson91/unraid-plugin-template/.github/workflows/release.yml@main
+    with:
+      version: ${{ inputs.version || '' }}
+      force: ${{ inputs.force || false }}
+      dry_run: ${{ inputs.dry_run || false }}

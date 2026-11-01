@@ -1,18 +1,19 @@
-# kind
+# unraid-kind
 
-This is the repository for the unraid kind plugin.
+An Unraid plugin that installs kind ([upstream](https://github.com/kubernetes-sigs/kind)).
 
-<img src="https://git.panaetius.co.uk/dtomlinson91/unraid-kind/raw/branch/main/assets/unraid-kind.png" width="300px" />
+## Install
 
-## description
+In the Unraid web UI, go to **Plugins > Install Plugin** and paste this URL:
 
-kind is a tool for running local Kubernetes clusters using Docker container “nodes”.
-kind was primarily designed for testing Kubernetes itself, but may be used for local development or CI.
+```
+https://github.com/dtomlinson91/unraid-kind/raw/main/unraid-kind.plg
+```
 
-See the [git repository](https://github.com/kubernetes-sigs/kind) for kind for more information.
+## Release
 
-## dev
+The `release` workflow uses the shared workflow in [unraid-plugin-template](https://github.com/dtomlinson91/unraid-plugin-template).
+It runs every Monday, and it releases a new plugin version when upstream has a new release.
+To release by hand, run the workflow from the **Actions** tab.
 
-Drone builds the plugin source using go on a new tag creation.
-
-Tag versions follow kind releases.
+The plugin settings are in `plugin.conf`. The text for the Unraid Plugins page is in `description.md`.
